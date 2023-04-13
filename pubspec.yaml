@@ -1,6 +1,6 @@
 name: "veritool"
 description: "Veritool is a minimalistic Dart CLI for Semantic Versioning-based version number updates in Flutter app&#x27;s pubspec.yaml file."
-version: "0.0.2+4"
+version: "0.0.3+5"
 homepage: "https://github.com/sheeroo/veritool/blob/main/README.md"
 repository: "https://github.com/sheeroo/veritool"
 environment: 
