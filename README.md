@@ -1,6 +1,6 @@
 ## veritool
 
-[![style: pub][0.0.0]][very_good_analysis_link]
+[![style: pub][0.0.0]][veritool_link]
 [![License: MIT][license_badge]][license_link]
 
 Veritool is a minimalistic Dart CLI for Semantic Versioning-based version number updates in Flutter app&#x27;s pubspec.yaml file..
