@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 class YamlWriter {
   /// Initialize the writer with the amount of [spaces] per level.
   YamlWriter({
@@ -31,10 +33,10 @@ class YamlWriter {
 
   /// Write a list to a YAML string.
   /// Pass the list in as [yaml] and indent it to the [indent] level.
-  String _writeList(List yaml, {int indent = 0}) {
+  String _writeList(List<dynamic> yaml, {int indent = 0}) {
     var str = '\n';
 
-    for (var item in yaml) {
+    for (final item in yaml) {
       // ignore: use_string_buffers
       str +=
           '${_indent(indent)}- ${_writeInternal(item, indent: indent + 1)}\n';
@@ -45,11 +47,11 @@ class YamlWriter {
 
   /// Write a map to a YAML string.
   /// Pass the map in as [yaml] and indent it to the [indent] level.
-  String _writeMap(Map yaml, {int indent = 0}) {
+  String _writeMap(Map<dynamic, dynamic> yaml, {int indent = 0}) {
     var str = '\n';
 
-    for (var key in yaml.keys) {
-      var value = yaml[key];
+    for (final key in yaml.keys) {
+      final value = yaml[key];
       // ignore: use_string_buffers
       str += '${_indent(indent)}$key: ${_writeInternal(
         value,

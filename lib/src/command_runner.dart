@@ -1,8 +1,9 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
-import 'package:pub_updater/pub_updater.dart';
 import 'package:veritool/src/commands/commands.dart';
 import 'package:veritool/src/version.dart';
 
