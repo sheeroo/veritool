@@ -32,9 +32,13 @@ class UpdateCommand extends Command<int> {
 
     final pubspecYaml = loadYaml(pubspecFile.readAsStringSync()) as YamlMap;
 
-    final currentVersion = Version.parse(pubspecYaml['version'] as String);
+    final currentVersionWithBuild = pubspecYaml['version'] as String;
 
-    final buildNumber = int.parse(currentVersion.toString().split('+').last);
+    final currentVersion = Version.parse(
+      currentVersionWithBuild.split('+').first,
+    );
+
+    final buildNumber = int.parse(currentVersionWithBuild.split('+').last);
 
     _logger.info(
       lightCyan.wrap('Current version: $currentVersion'),
@@ -88,8 +92,8 @@ class Choices {
 
   static const all = [
     current,
-    nextMajor,
-    nextMinor,
     nextPatchVersion,
+    nextMinor,
+    nextMajor,
   ];
 }
