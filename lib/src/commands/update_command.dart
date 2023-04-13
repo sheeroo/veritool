@@ -3,12 +3,8 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:pub_updater/pub_updater.dart';
-import 'package:veritool/src/command_runner.dart';
-import 'package:veritool/src/version.dart';
+import 'package:veritool/src/utils/yaml_writer.dart';
 import 'package:yaml/yaml.dart';
-
-import '../utils/yaml_writer.dart';
 
 /// {@template update_command}
 /// A command which updates the CLI.
@@ -33,17 +29,18 @@ class UpdateCommand extends Command<int> {
   Future<int> run() async {
     // Read the current version number from the pubspec.yaml file
     final pubspecFile = File('pubspec.yaml');
+
     final pubspecYaml = loadYaml(pubspecFile.readAsStringSync()) as YamlMap;
+
     final currentVersion = Version.parse(pubspecYaml['version'] as String);
 
     final buildNumber = int.parse(currentVersion.toString().split('+').last);
-    // Print the current version number to the console
 
     _logger.info(
-      lightCyan.wrap('Current version: $currentVersion + $buildNumber'),
+      lightCyan.wrap('Current version: $currentVersion'),
     );
 
-    // Update the pubspec.yaml file with the new version number
+    // Get a mutable copy of the pubspec.yaml file
     final mutableYamlMap = {...pubspecYaml};
 
     final result = _logger.chooseOne(
