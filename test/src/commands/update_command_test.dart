@@ -33,7 +33,6 @@ void main() {
       processResult = _MockProcessResult();
       commandRunner = VeritoolCommandRunner(
         logger: logger,
-        pubUpdater: pubUpdater,
       );
 
       when(

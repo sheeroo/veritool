@@ -44,7 +44,6 @@ void main() {
 
       commandRunner = VeritoolCommandRunner(
         logger: logger,
-        pubUpdater: pubUpdater,
       );
     });
 
