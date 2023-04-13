@@ -11,7 +11,7 @@ Veritool is a minimalistic Dart CLI for Semantic Versioning-based version number
 ## Getting Started 🚀
 
 ```sh
-dart pub global activate --source=path https://github.com/sheeroo/veritool
+dart pub global activate --source=path https://github.com/sheeroo/veritool.git
 ```
 
 ## Usage
