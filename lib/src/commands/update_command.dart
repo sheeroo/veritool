@@ -41,7 +41,7 @@ class UpdateCommand extends Command<int> {
     final buildNumber = int.parse(currentVersionWithBuild.split('+').last);
 
     _logger.info(
-      lightCyan.wrap('Current version: $currentVersion'),
+      'Current version:  😩 ${lightCyan.wrap(currentVersion.toString())}',
     );
 
     // Get a mutable copy of the pubspec.yaml file
@@ -50,6 +50,7 @@ class UpdateCommand extends Command<int> {
     final result = _logger.chooseOne(
       'What version would you like to update to?',
       choices: Choices.all,
+      display: (choice) => lightYellow.wrap(choice)!,
     );
 
     Version nextVersion;
@@ -78,17 +79,19 @@ class UpdateCommand extends Command<int> {
 
     pubspecFile.writeAsStringSync(writer.write(mutableYamlMap));
 
-    _logger.success('Version updated to $newVersionWithBuild');
+    _logger.info(
+      'Version updated to: 🚀 ${lightCyan.wrap(newVersionWithBuild)}',
+    );
 
     return ExitCode.success.code;
   }
 }
 
 class Choices {
-  static const current = 'current';
-  static const nextMajor = 'nextMajor';
-  static const nextMinor = 'nextMinor';
-  static const nextPatchVersion = 'nextPatchVersion';
+  static const current = '🤪 Current';
+  static const nextMajor = '🥇 Next Major';
+  static const nextMinor = '🥈 Next Minor';
+  static const nextPatchVersion = '🥉 Next Patch Version';
 
   static const all = [
     current,
