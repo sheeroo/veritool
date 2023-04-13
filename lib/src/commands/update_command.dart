@@ -68,6 +68,9 @@ class UpdateCommand extends Command<int> {
       case Choices.nextPatchVersion: // next patch
         nextVersion = currentVersion.nextPatch;
         break;
+      case Choices.firstPreRelease: // next prelease
+        nextVersion = currentVersion.firstPreRelease;
+        break;
       default:
         throw Exception('Invalid choice');
     }
@@ -89,12 +92,15 @@ class UpdateCommand extends Command<int> {
 
 class Choices {
   static const current = '🤪 Current';
+  static const firstPreRelease =
+      '🥵 First possible pre-release of this version.';
   static const nextMajor = '🥇 Next Major';
   static const nextMinor = '🥈 Next Minor';
   static const nextPatchVersion = '🥉 Next Patch Version';
 
   static const all = [
     current,
+    firstPreRelease,
     nextPatchVersion,
     nextMinor,
     nextMajor,
