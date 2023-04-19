@@ -12,7 +12,7 @@ class _MockLogger extends Mock implements Logger {}
 
 class _MockProcessResult extends Mock implements ProcessResult {}
 
-const latestVersion = '0.0.7';
+const latestVersion = '0.0.12';
 
 final updatePrompt = '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
