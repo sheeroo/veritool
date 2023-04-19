@@ -86,6 +86,17 @@ class UpdateCommand extends Command<int> {
       'Version updated to: 🚀 ${lightCyan.wrap(newVersionWithBuild)}',
     );
 
+    await Process.run('git', ['add', 'pubspec.yaml']);
+
+    await Process.run('git', ['commit', '-m', '🚀 v$newVersionWithBuild']);
+
+    await Process.run(
+      'git',
+      ['tag', 'v$newVersionWithBuild', '-m', '🚀 result'],
+    );
+
+    await Process.run('git', ['push', '--follow-tags']);
+
     return ExitCode.success.code;
   }
 }
