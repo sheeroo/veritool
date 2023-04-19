@@ -15,7 +15,7 @@
     },
     {
       "name": "allowed",
-      "path": "https://github.com/sheeroo/veritool/blob/main/.github/dictionary.txt",
+      "path": "https://raw.githubusercontent.com/sheeroo/veritool/main/.github/dictionary.txt",
       "description": "Forbidden VGV Spellings"
     }
   ],
