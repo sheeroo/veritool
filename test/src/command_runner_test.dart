@@ -4,7 +4,6 @@ import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 import 'package:veritool/src/command_runner.dart';
 import 'package:veritool/src/version.dart';
@@ -21,7 +20,6 @@ Run ${lightCyan.wrap('$executableName update')} to update''';
 
 void main() {
   group('VeritoolCommandRunner', () {
-    late PubUpdater pubUpdater;
     late Logger logger;
     late ProcessResult processResult;
     late VeritoolCommandRunner commandRunner;
