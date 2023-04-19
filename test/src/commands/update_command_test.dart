@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:veritool/src/command_runner.dart';
 import 'package:veritool/src/commands/commands.dart';
 
 class _MockLogger extends Mock implements Logger {}
