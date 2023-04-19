@@ -13,10 +13,6 @@ class _MockLogger extends Mock implements Logger {}
 
 class _MockProcessResult extends Mock implements ProcessResult {}
 
-class _MockProgress extends Mock implements Progress {}
-
-class _MockPubUpdater extends Mock implements PubUpdater {}
-
 const latestVersion = '0.0.0';
 
 final updatePrompt = '''
@@ -31,12 +27,6 @@ void main() {
     late VeritoolCommandRunner commandRunner;
 
     setUp(() {
-      pubUpdater = _MockPubUpdater();
-
-      when(
-        () => pubUpdater.getLatestVersion(any()),
-      ).thenAnswer((_) async => packageVersion);
-
       logger = _MockLogger();
 
       processResult = _MockProcessResult();
@@ -45,60 +35,6 @@ void main() {
       commandRunner = VeritoolCommandRunner(
         logger: logger,
       );
-    });
-
-    test('shows update message when newer version exists', () async {
-      when(
-        () => pubUpdater.getLatestVersion(any()),
-      ).thenAnswer((_) async => latestVersion);
-
-      final result = await commandRunner.run(['--version']);
-      expect(result, equals(ExitCode.success.code));
-      verify(() => logger.info(updatePrompt)).called(1);
-    });
-
-    test(
-      'Does not show update message when the shell calls the '
-      'completion command',
-      () async {
-        when(
-          () => pubUpdater.getLatestVersion(any()),
-        ).thenAnswer((_) async => latestVersion);
-
-        final result = await commandRunner.run(['completion']);
-        expect(result, equals(ExitCode.success.code));
-        verifyNever(() => logger.info(updatePrompt));
-      },
-    );
-
-    test('does not show update message when using update command', () async {
-      when(
-        () => pubUpdater.getLatestVersion(any()),
-      ).thenAnswer((_) async => latestVersion);
-      when(
-        () => pubUpdater.update(
-          packageName: packageName,
-          versionConstraint: any(named: 'versionConstraint'),
-        ),
-      ).thenAnswer((_) async => processResult);
-      when(
-        () => pubUpdater.isUpToDate(
-          packageName: any(named: 'packageName'),
-          currentVersion: any(named: 'currentVersion'),
-        ),
-      ).thenAnswer((_) async => true);
-
-      final progress = _MockProgress();
-      final progressLogs = <String>[];
-      when(() => progress.complete(any())).thenAnswer((_) {
-        final message = _.positionalArguments.elementAt(0) as String?;
-        if (message != null) progressLogs.add(message);
-      });
-      when(() => logger.progress(any())).thenReturn(progress);
-
-      final result = await commandRunner.run(['update']);
-      expect(result, equals(ExitCode.success.code));
-      verifyNever(() => logger.info(updatePrompt));
     });
 
     test('can be instantiated without an explicit analytics/logger instance',
@@ -155,22 +91,6 @@ void main() {
         verify(() => logger.detail('  Top level options:')).called(1);
         verify(() => logger.detail('  - verbose: true')).called(1);
         verifyNever(() => logger.detail('    Command options:'));
-      });
-
-      test('enables verbose logging for sub commands', () async {
-        final result = await commandRunner.run([
-          '--verbose',
-          'sample',
-          '--cyan',
-        ]);
-        expect(result, equals(ExitCode.success.code));
-
-        verify(() => logger.detail('Argument information:')).called(1);
-        verify(() => logger.detail('  Top level options:')).called(1);
-        verify(() => logger.detail('  - verbose: true')).called(1);
-        verify(() => logger.detail('  Command: sample')).called(1);
-        verify(() => logger.detail('    Command options:')).called(1);
-        verify(() => logger.detail('    - cyan: true')).called(1);
       });
     });
   });
