@@ -8,7 +8,7 @@
 ## [0.0.2+4] - 2023-04-13
 
 ### Added
-- Added prelease option
+- Added pre-release option
 
 ## [0.0.4+6] - 2023-04-19
 
