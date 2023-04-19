@@ -15,7 +15,7 @@
     },
     {
       "name": "allowed",
-      "path": "./allowed.txt",
+      "path": "https://github.com/sheeroo/veritool/blob/main/.github/dictionary.txt",
       "description": "Forbidden VGV Spellings"
     }
   ],
