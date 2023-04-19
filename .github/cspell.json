@@ -12,6 +12,11 @@
       "name": "vgv_forbidden",
       "path": "https://raw.githubusercontent.com/verygoodopensource/very_good_dictionaries/main/forbidden.txt",
       "description": "Forbidden VGV Spellings"
+    },
+    {
+      "name": "allowed",
+      "path": "./allowed.txt",
+      "description": "Forbidden VGV Spellings"
     }
   ],
   "useGitignore": true,
