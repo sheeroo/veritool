@@ -13,21 +13,15 @@ class _MockProcessResult extends Mock implements ProcessResult {}
 class _MockProgress extends Mock implements Progress {}
 
 void main() {
-  const latestVersion = '0.0.0';
-
   group('update', () {
     late Logger logger;
     late ProcessResult processResult;
-    late VeritoolCommandRunner commandRunner;
 
     setUp(() {
       final progress = _MockProgress();
       final progressLogs = <String>[];
       logger = _MockLogger();
       processResult = _MockProcessResult();
-      commandRunner = VeritoolCommandRunner(
-        logger: logger,
-      );
 
       when(() => progress.complete(any())).thenAnswer((_) {
         final message = _.positionalArguments.elementAt(0) as String?;
