@@ -10,5 +10,10 @@
 ### Added
 - Added prelease option
 
+## [0.0.4+6] - 2023-04-19
+
+### Added
+- Auto commit and tag pubspec changes
+
 
 
