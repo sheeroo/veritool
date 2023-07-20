@@ -50,7 +50,7 @@ class UpdateCommand extends Command<int> {
     final result = _logger.chooseOne(
       'What version would you like to update to?',
       choices: Choices.all,
-      display: (choice) => lightYellow.wrap(choice as String?)!,
+      display: (String choice) => lightYellow.wrap(choice)!,
     );
 
     Version nextVersion;
