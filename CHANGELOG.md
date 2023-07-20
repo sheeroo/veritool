@@ -15,5 +15,11 @@
 ### Added
 - Auto commit and tag pubspec changes
 
+## [0.1.0+16] - 2023-07-20
+
+### Added
+- Auto commit and tag pubspec changes
+
+
 
 
