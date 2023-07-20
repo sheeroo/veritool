@@ -50,7 +50,7 @@ class UpdateCommand extends Command<int> {
     final result = _logger.chooseOne(
       'What version would you like to update to?',
       choices: Choices.all,
-      display: (choice) => lightYellow.wrap(choice)!,
+      display: (choice) => lightYellow.wrap(choice as String?)!,
     );
 
     Version nextVersion;
@@ -94,8 +94,6 @@ class UpdateCommand extends Command<int> {
       'git',
       ['tag', 'v$newVersionWithBuild', '-m', '🚀 result'],
     );
-
-    await Process.run('git', ['push', '--follow-tags']);
 
     return ExitCode.success.code;
   }
