@@ -20,6 +20,13 @@
 ### Added
 - Auto commit and tag pubspec changes
 
+## [0.1.0+17] - 2025-06-02
+
+### Added
+- Updated dependencies
+
+
+
 
 
 
